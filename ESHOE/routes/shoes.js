@@ -6,7 +6,7 @@ const Shoes = require('../models/shoes');
 router.get('/', async (req, res) => {
     try {
         const shoes = await Shoes.find();
-        res.render("shop", { shoes });
+        res.json(shoes);
     } catch (err) {
         res.status(500).json({ message: err.message });
     }
