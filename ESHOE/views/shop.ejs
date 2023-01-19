@@ -12,11 +12,12 @@
 </head>
 <body>
   <div id="shop-container">
-    <% shoe.forEach(shoes => { %>
+    <% shoes.forEach(shoe => { %>
       <div class="shop-item">
         <h3><%= shoe.name %></h3>
         <p>Size: <%= shoe.size %></p>
         <p>Price: <%= shoe.price %></p>
+        <img src="<%= shoe.image %>" alt="<%= shoe.name %>">
       </div>
     <% }); %>
   </div>
