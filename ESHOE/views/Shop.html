@@ -1,3 +1,4 @@
+<script src="shop.ejs"></script>
 <header>
     <h1>ESHOE</h1>
     <nav>
@@ -59,9 +60,14 @@ main h2 {
 
   <main>
     <h1 style="color: aqua;"></h1>
-    <div id="shop-container">
       <!-- Code to retrieve items from the database and display them goes here -->
+
       <div class="shop-item">
+        <body>
+            <div id="shop-container"></div>
+            
+            <script>src="backend/server.js"</script>
+          </body>
         <img src="item1.jpg" alt="Item 1">
         <h3>Item 1</h3>
         <p>Brand: Brand 1</p>
@@ -76,4 +82,7 @@ main h2 {
         <button class="btn btn-primary">Add to Cart</button>
       </div>
     </div>
+    <div id="shoes"></div>
   </main>
+
+ 

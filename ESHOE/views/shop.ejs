@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Shop</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <style>
+    
+    /* Some CSS to style the shop items */
+  
+   
+  </style>
+</head>
+<body>
+  <div id="shop-container">
+    <% shoes.forEach(shoes => { %>
+      <div class="shop-item">
+        <h3><%= shoe.name %></h3>
+        <p>Size: <%= shoe.size %></p>
+        <p>Price: <%= shoe.price %></p>
+      </div>
+    <% }); %>
+  </div>
+</body>
+</html>
