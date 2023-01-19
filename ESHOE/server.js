@@ -3,6 +3,8 @@ const mongoose = require('mongoose');
 const path = require('path');
 const Shoes = require('./models/shoes');
 const router = require('./routes/shoes');
+const shoesRouter = require('./api/shoes');
+
 
 const app = express();
 mongoose.set('strictQuery', false);
@@ -16,7 +18,7 @@ mongoose.connect('mongodb+srv://jamesbrowne:tGkr76p5m8cgfGUG@cluster0.90fwvtk.mo
   .catch(err => {
     console.log(`Error: ${err.message}`);
   });
-
+app.use('/api/shoes', shoesRouter);
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 app.set('views', path.join(__dirname, 'views'));

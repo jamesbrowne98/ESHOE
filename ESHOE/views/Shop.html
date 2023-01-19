@@ -85,4 +85,24 @@ main h2 {
     <div id="shoes"></div>
   </main>
 
+  <script>
+    // Make an HTTP GET request to your server's API endpoint to retrieve the data
+    fetch('/api/shoes')
+        .then(response => response.json()) // Parse the response as JSON
+        .then(data => {
+            // Loop through the array of shoes and insert them into the HTML
+            for (let i = 0; i < data.length; i++) {
+                let shoe = data[i];
+                let shoeDiv = document.createElement("div");
+                shoeDiv.innerHTML = `
+                    <h3>${shoe.name}</h3>
+                    <p>Size: ${shoe.size}</p>
+                    <p>Price: ${shoe.price}</p>
+                `;
+                document.getElementById("shop-container").appendChild(shoeDiv);
+            }
+        })
+        .catch(error => console.error(error));
+</script>
+
  
