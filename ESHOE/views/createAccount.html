@@ -48,42 +48,22 @@ h2 span {
     }
         
     </style>
-
-</head>
-
-
-
-<body>
-<div class="topnav" style="position:relative; left: 80px; top: 20px; font-size:x-large; color: aqua;" >
-<p><b>ESHOE</b>
-</p>
-    </div>
-
-    <div class="img">
-<img src="usericon.png"  >  
-</div>
-<h2><span>CREATE AN ACCOUNT</span></h2>
-
-<br>
-<div class="createAccount">
-<p>Email</p>
-<input type="email" id="emailtxt" style="background-color:#D9D9D9; width: 400px; height: 30px;">
-<p>UserName</p>
-<input type="text" id="nametxt" style="background-color:#D9D9D9; width: 400px; height: 30px;">
-<p>Password</p>
-<input type="password" id="passwordtxt" style="background-color:#D9D9D9; width: 400px; height: 30px;">
-<p>Confirm Password</p>
-<input type="password" id="confirmtxt" style="background-color:#D9D9D9; width: 400px; height: 30px;">
-<br>
-<input type="button" id="createAccount" value="Create Account">
-
-
-
-
-
-</div>
-
-
-
-</body>
+ <head>
+    <title>Create Account</title>
+  </head>
+  <body>
+    <h1>Create Account</h1>
+    <form action="/createAccount" method="post">
+      <label>Username:</label>
+      <input type="text" name="username">
+      <br>
+      <label>Email:</label>
+      <input type="email" name="email">
+      <br>
+      <label>Password:</label>
+      <input type="password" name="password">
+      <br>
+      <input type="submit" value="Create">
+    </form>
+  </body>
 </html>

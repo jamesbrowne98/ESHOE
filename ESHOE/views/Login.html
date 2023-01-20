@@ -3,35 +3,49 @@
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
     <title>ESHOE</title>
     <style>
-        body {
-            font-family: Arial, Helvetica, sans-serif;
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+}
 
-        }
+h1 {
+    text-align: center;
+    margin: 30px 0;
+}
 
-        
-    .topnav {
-            background-color: rgb(255, 255, 255);
-            overflow: hidden;
-            position: fixed;
-            /* Set the navbar to fixed position */
-            top: 0;
-            /* Position the navbar at the top of the page */
-            width: 100%;
-            /* Full width */            
-       }
+form {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin: 0 auto;
+    width: 300px;
+}
 
-    .login {
-        position: fixed;
-        top: 250;
-        width: 100%;
-    }   
+label {
+    margin: 10px 0;
+}
 
-    hr {
-  height:5px;
-  position: relative;
-  background-color:#00A4BD;
-        }
-    
+input[type="text"], input[type="email"], input[type="password"] {
+    padding: 10px;
+    margin-bottom: 20px;
+    border: none;
+    border-radius: 4px;
+}
+
+input[type="submit"] {
+    background-color: blue;
+    color: white;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+input[type="submit"]:hover {
+    background-color: darkblue;
+}
         
     </style>
 
@@ -39,29 +53,29 @@
 
 
 
-<body>
-<div class="topnav" style="position:relative; left: 80px; top: 20px; font-size:x-large; color: aqua;" >
-<p><b>ESHOE</b>
-<br>Buy and sell your shoes here!
-</p>
-    </div>
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Login</title>
+  </head>
+  <body>
+    <h1>Login</h1>
+    <form action="/login" method="post">
+      <label>Username:</label>
+      <input type="text" name="username">
+      <br>
+      <label>Email:</label>
+      <input type="email" name="email">
+      <br>
+      <label>Password:</label>
+      <input type="password" name="password">
+      <br>
+      <input type="submit" value="Submit">
 
-    <hr>
-
-<div class="login" style="left: 80px; position: relative;">
-    <p><b>EMAIL</b>
-        <br><input type="email" id="emailtxt" style="background-color:#D9D9D9 ;">
-        <br>Password
-        <br><input type="password" id="passwordtxt" style="background-color:#D9D9D9 ;">
-        <br><input type="button" id="btnLogin" value="LOGIN">
-        <br>
-        <br>
-        <br>Don't have an account? Create one here
+      <br>Don't have an account? Create one here
         <br><A HREF = "createAccount.html">Create An Account</A>
-    </p>
-</div>    
-
-
-
-</body>
+    </form>
+  </body>
 </html>
+</html>
+
