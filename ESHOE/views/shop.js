@@ -1,7 +1,7 @@
 
 
   // Make an HTTP GET request to your server's API endpoint to retrieve the data
-  fetch('http://localhost:3000/api/shoes')
+  fetch('http://localhost:8080/api/shoes')
       .then(response => response.json()) // Parse the response as JSON
       .then(data => {
           // Loop through the array of shoes and insert them into the HTML

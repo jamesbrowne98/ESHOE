@@ -8,7 +8,13 @@ const cors = require('cors');
 
 
 const app = express();
-app.use(cors());
+const corsOptions = {
+    origin: 'http://localhost:8080',
+    methods: ['GET', 'POST'],
+    allowedHeaders: ['Content-Type', 'Authorization']
+  };
+  app.use(cors(corsOptions));
+  
 mongoose.Promise = global.Promise;
 
 mongoose.set('strictQuery', false);
@@ -31,5 +37,16 @@ app.get('/shop', (req, res) => {
     res.render('Shop', { shoes: shoes });
 });
 
-const PORT = process.env.PORT || 3000;
-app.listen(PORT, () => console.log(`Server started on http://localhost:${PORT}`));
+app.get('/api/shoes', async (req, res) => {
+    try {
+        const shoes = await Shoes.find();
+        res.json(shoes);
+    } catch (err) {
+        res.status(500).json({ message: err.message });
+    }
+});
+
+const PORT = 8080;
+app.listen(PORT, () => {
+    console.log(`Server started on http://localhost:${PORT}`)
+});
