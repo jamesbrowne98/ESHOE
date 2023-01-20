@@ -3,7 +3,7 @@ const mongoose = require('mongoose');
 
 const path = require('path');
 const Shoes = require('./models/shoes');
-const shoesRouter = require('./api/shoes');
+const shoesRouter = require('./routes/api');
 const cors = require('cors');
 
 
@@ -13,8 +13,16 @@ const corsOptions = {
     methods: ['GET', 'POST'],
     allowedHeaders: ['Content-Type', 'Authorization']
   };
-  app.use(cors(corsOptions));
+  app.use(cors({
+    origin: 'http://localhost:8080'
+  }));
   
+  app.use(function(req, res, next) {
+    res.header("Access-Control-Allow-Origin", "*");
+    res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
+    next();
+  });
+
 mongoose.Promise = global.Promise;
 
 mongoose.set('strictQuery', false);
@@ -37,7 +45,7 @@ app.get('/shop', (req, res) => {
     res.render('Shop', { shoes: shoes });
 });
 
-app.get('/api/shoes', async (req, res) => {
+app.get('/routes/api', async (req, res) => {
     try {
         const shoes = await Shoes.find();
         res.json(shoes);
