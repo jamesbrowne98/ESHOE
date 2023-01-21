@@ -3,8 +3,13 @@ fetch('http://localhost:8080/routes/api')
 .then(response => response.json()) // Parse the response as JSON
 .then(data => {
     // Loop through the array of shoes and insert them into the HTML
+    const absoluteData = data.map(shoe => {
+        shoe.image = 'http://localhost:8080'.concat(shoe.image);
+        return shoe;
+      });
+
     for (let i = 0; i < data.length; i++) {
-        let shoe = data[i];
+        let shoe = absoluteData[i];
         let shoeDiv = document.createElement("div");
         shoeDiv.innerHTML = `
             <h3>${shoe.name}</h3>
@@ -28,7 +33,7 @@ for (var i = 0; i < data.length; i++) {
   shoesHTML += "<img src='" + data[i].image + "'>"
   shoesHTML += "<p>Size: " + data[i].size + "</p>"
   shoesHTML += "<p>Price: $" + data[i].price + "</p>"
-  shoesHTML += "<p>Image: $" + data[i].image +"</p>" 
+  shoesHTML += "<img src='" + data[i].image + "'>" 
   shoesHTML += "</div>"
 }
 $("#shoes-container").html(shoesHTML);
