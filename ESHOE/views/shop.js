@@ -10,6 +10,7 @@ fetch('http://localhost:8080/routes/api')
             <h3>${shoe.name}</h3>
             <p>Size: ${shoe.size}</p>
             <p>Price: ${shoe.price}</p>
+            <p>${shoe.image}<p>
         `;
         document.getElementById("shop-container").appendChild(shoeDiv);
     }
@@ -27,6 +28,7 @@ for (var i = 0; i < data.length; i++) {
   shoesHTML += "<img src='" + data[i].image + "'>"
   shoesHTML += "<p>Size: " + data[i].size + "</p>"
   shoesHTML += "<p>Price: $" + data[i].price + "</p>"
+  shoesHTML += "<p>Image: $" + data[i].image +"</p>" 
   shoesHTML += "</div>"
 }
 $("#shoes-container").html(shoesHTML);

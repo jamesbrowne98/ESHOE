@@ -12,6 +12,8 @@ router.get('/', async (req, res) => {
     }
 });
 
+
+//upload shoes
 const multer = require('multer');
 const upload = multer({ dest: 'uploads/' });
 router.post('/sell', upload.single('image'), async (req, res) => {
