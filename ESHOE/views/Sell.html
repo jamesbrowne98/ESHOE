@@ -83,20 +83,26 @@
 
   <main>
 
-    <form id="sell-form" action="/submit" method="POST">
-      <div class="form-group">
-        <label for="name">Name:</label>
-        <input type="text" class="form-control" id="name" name="name" required>
-      </div>
-      <div class="form-group">
-        <label for="brand">Brand:</label>
-        <input type="text" class="form-control" id="brand" name="brand" required>
-      </div>
-      <div class="form-group">
-        <label for="price">Price:</label>
-        <input type="number" class="form-control" id="price" name="price" required>
-      </div>
-      <div class="form-group">
-        <label for="image">Image:</label>
-        <input type="file" class="form-control" id="image" name="image" required>
-      </div
+    <form id="shoe-form" enctype="multipart/form-data">
+      <input type="text" name="name" placeholder="Shoe Name">
+      <input type="number" name="size" placeholder="Shoe Size">
+      <input type="number" name="price" placeholder="Shoe Price">
+      <input type="file" name="image" accept="image/*">
+      <input type="submit" value="Sell">
+  </form>
+
+  <script>
+    const form = document.getElementById('shoe-form');
+    form.addEventListener('submit', async (event) => {
+    event.preventDefault(); // prevent the form from submitting the default way
+    const formData = new FormData(form); // convert the form's data to a usable format
+    const response = await fetch('http://localhost:8080/routes/api', {
+        method: 'POST',
+        body: formData
+    });
+    const data = await response.json();
+    // handle the response data here, for example, you can show a message to the user if the shoe was added successfully
+  
+});
+
+  </script>

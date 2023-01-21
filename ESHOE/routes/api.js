@@ -12,6 +12,22 @@ router.get('/', async (req, res) => {
     }
 });
 
+const multer = require('multer');
+const upload = multer({ dest: 'uploads/' });
+router.post('/sell', upload.single('image'), async (req, res) => {
+    const shoe = new Shoes({
+        name: req.body.name,
+        brand: req.body.brand,
+        price: req.body.price,
+        image: req.file.path
+    });
 
+    try {
+        const newShoe = await shoe.save();
+        res.status(201).json(newShoe);
+    } catch (err) {
+        res.status(400).json({ message: err.message });
+    }
+});
 
 module.exports = router;

@@ -4,10 +4,11 @@ const bodyParser = require('body-parser');
 const bcrypt = require('bcrypt');
 const User = require('../models/user');
 
+
 router.use(bodyParser.urlencoded({ extended: true }));
 router.use(bodyParser.json());
 
-router.post('/register', async (req, res) => {
+router.post('/createAccount', async (req, res) => {
   try {
     const { email, username, password } = req.body;
     const hashedPassword = await bcrypt.hash(password, 10);
