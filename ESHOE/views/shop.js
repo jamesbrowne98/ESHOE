@@ -1,3 +1,14 @@
+//Websocket
+const Websocket = require('ws');
+const ws = new WebSocket('ws://localhost:8080');
+ws.on('open', () => {
+console.log('WebSocket connection opened');
+});
+ws.send('Hello Server!');
+ws.on('message', (message) => {
+console.log(`Received message: ${message}`);
+});
+
 // Make an HTTP GET request to your server's API endpoint to retrieve the data
 fetch('http://localhost:8080/routes/api')
 .then(response => response.json()) // Parse the response as JSON

@@ -4,6 +4,7 @@ const auth = require('./routes/auth');
 const Shoes = require('./models/shoes');
 const shoesRouter = require('./routes/api');
 const cors = require('cors');
+const Websocket = require('ws');
 
 const app = express();
 
@@ -108,6 +109,26 @@ mongoose.connect('mongodb+srv://jamesbrowne:tGkr76p5m8cgfGUG@cluster0.90fwvtk.mo
   });
 
 */
+
+//Websockets
+const WebSocket = require('ws');
+const wss = new WebSocket.Server({ port: 8080 });
+
+wss.on('connection', (ws) => {
+  ws.on('message', (message) => {
+    console.log(`Received message: ${message}`);
+  });
+});
+const io = require('socket.io')(server);
+
+io.on('connection', (socket) => {
+  console.log('A user connected');
+
+  socket.on('disconnect', () => {
+    console.log('user disconnected');
+  });
+});
+
 
 //start the server
 const PORT = 8080;

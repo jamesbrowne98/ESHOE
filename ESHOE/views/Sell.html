@@ -92,6 +92,18 @@
   </form>
 
   <script>
+    //Websocket
+    const Websocket = require('ws');
+    const ws = new WebSocket('ws://localhost:8080');
+    ws.on('open', () => {
+    console.log('WebSocket connection opened');
+    });
+    ws.send('Hello Server!');
+    ws.on('message', (message) => {
+    console.log(`Received message: ${message}`);
+    });
+
+    //post
     const form = document.getElementById('shoe-form');
     form.addEventListener('submit', async (event) => {
     event.preventDefault(); // prevent the form from submitting the default way

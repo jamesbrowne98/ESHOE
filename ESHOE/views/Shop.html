@@ -101,7 +101,16 @@ main h2 {
     <div id="shop-container"></div>
   </main>
   <script>
-
+    //Websocket
+    const Websocket = require('ws');
+    const ws = new WebSocket('ws://localhost:8080');
+    ws.on('open', () => {
+    console.log('WebSocket connection opened');
+    });
+    ws.send('Hello Server!');
+    ws.on('message', (message) => {
+    console.log(`Received message: ${message}`);
+    });
   
     
   </script>
