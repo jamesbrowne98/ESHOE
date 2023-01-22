@@ -9,11 +9,11 @@ const app = express();
 
 const corsOptions = {
     origin: 'http://localhost:8080',
-    methods: ['GET', 'POST'],
+    methods: ['GET', 'POST', 'DELETE'],
     allowedHeaders: ['Content-Type', 'Authorization']
   };
   app.use(cors({
-    origin: 'http://localhost:8080'
+    origin: 'http://localhost:8080' && 'http://192.168.0.53:8080'
   }));
   
   app.use(function(req, res, next) {
@@ -74,7 +74,17 @@ app.get('/routes/api', async (req, res) => {
   });
   
 
-
+  //handles deleting shoes
+  app.delete('/routes/api/:id', (req, res) => {
+    // Delete shoe from the database
+    Shoes.findByIdAndRemove(req.params.id, (err, shoe) => {
+        if (err) {
+            res.send(err);
+        } else {
+            res.json({ message: `Shoe with id ${shoe._id} successfully deleted` });
+        }
+    });
+});
 
 
 /*

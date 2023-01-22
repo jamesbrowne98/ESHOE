@@ -15,9 +15,20 @@ fetch('http://localhost:8080/routes/api')
             <h3>${shoe.name}</h3>
             <p>Size: ${shoe.size}</p>
             <p>Price: ${shoe.price}</p>
-            <p>${shoe.image}<p>
-        `;
+            <p>${shoe.image}<p>   `;
+
+             // create the delete button
+            let deleteButton = document.createElement("button");
+            deleteButton.innerHTML = "Buy";
+            deleteButton.classList.add("delete-button");
+            deleteButton.dataset.id = shoe._id;
+            // add the delete button to the shoeDiv
+            shoeDiv.appendChild(deleteButton);
+            // add the shoeDiv to the page
+
         document.getElementById("shop-container").appendChild(shoeDiv);
+        
+
     }
 })
 .catch(error => console.error(error));
@@ -37,4 +48,25 @@ for (var i = 0; i < data.length; i++) {
   shoesHTML += "</div>"
 }
 $("#shoes-container").html(shoesHTML);
+});
+
+//Buy button
+document.addEventListener("click", (event) => {
+    if (event.target.classList.contains("delete-button")) {
+        const id = event.target.dataset.id;
+        fetch(`http://localhost:8080/routes/api/${id}`, {
+            method: 'DELETE'
+        })
+        .then(response => {
+            if(response.ok) {
+                event.target.parentElement.remove();
+            }
+        })
+        .then(data => {
+            // update the page to remove the deleted shoe
+        })
+        .catch(error => {
+            console.log(error);
+        });
+    }
 });

@@ -15,7 +15,7 @@ router.get('/', async (req, res) => {
 
 //upload shoes
 const multer = require('multer');
-const upload = multer({ dest: 'uploads/' });
+const upload = multer({ dest: '/uploads/' });
 router.post('/sell', upload.single('image'), async (req, res) => {
     const shoe = new Shoes({
         name: req.body.name,
@@ -31,5 +31,20 @@ router.post('/sell', upload.single('image'), async (req, res) => {
         res.status(400).json({ message: err.message });
     }
 });
+
+//Delete 
+
+router.delete('/:id', (req, res) => {
+    Shoe.findByIdAndDelete(req.params.id)
+      .then(() => {
+        res.json({ msg: 'Shoe deleted' });
+      })
+      .catch(err => {
+        res.status(500).json({ error: err.message });
+      });
+  });
+  
+
+
 
 module.exports = router;
